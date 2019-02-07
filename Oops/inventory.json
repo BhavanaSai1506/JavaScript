@@ -1,0 +1,53 @@
+{
+    "rice": [
+        {
+            "name": "basmati",
+            "weight": 5,
+            "rate": 80
+        },
+        {
+            "name": "raw",
+            "weight": 25,
+            "rate": 60
+        },
+        {
+            "name": "steam",
+            "weight": 20,
+            "rate": 50
+        }
+    ],
+    "pulses": [
+        {
+            "name": "lentil",
+            "weight": 5,
+            "rate": 40
+        },
+        {
+            "name": "black gram",
+            "weight": 10,
+            "rate": 50
+        },
+        {
+            "name": "lima beans",
+            "weight": 3,
+            "rate": 60
+        }
+    ],
+    "wheat": [
+        {
+            "name": "annapurna",
+            "weight": 5,
+            "rate": 45
+        },
+        {
+            "name": "ashirvaad",
+            "weight": 10,
+            "rate": 50
+        },
+        {
+            "name": " samrat India",
+            "weight": 15,
+            "rate": 60
+        }
+    ]
+}
