@@ -947,6 +947,20 @@ module.exports = {
         }
     },
 
+    bubbleSort(size){
+        for (let a = 0; a < size.length; a++) {
+            for (let b = a + 1; b < size.length; b++) {
+                if (size[a] > size[b]) {
+                    var temp = size[a];
+                    size[a] = size[b];
+                    size[b] = temp;
+                }
+            }
+        }
+        
+        console.log("  [  "+size +"  ]  " );
+    },
+
     /*******************************************MergeSort***********************************************
      * 9.mergeSort
      * **************************************
