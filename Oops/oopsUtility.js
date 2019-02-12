@@ -29,8 +29,7 @@ class Stock {
  *               name, weight, price per kg. Get JSON Object in Java or NSDictionary in iOS. Create Inventory 
  *               Object from JSON. Calculate the value for every Inventory. 
  *******************************************************************************************************/
-
-class Rice {
+class Item{
     constructor(name, weight, price) {
         this.name = name;
         this.weight = weight;
@@ -39,27 +38,27 @@ class Rice {
     totalValue() {
         return this.weight * this.price;
     }
+
 }
 
-class Wheat {
+
+class Rice extends Item {
     constructor(name, weight, price) {
-        this.name = name;
-        this.weight = weight;
-        this.price = price;
+        super(name,weight,price)
     }
-    totalValue() {
-        return this.weight * this.price;
+
     }
+
+
+class Wheat extends Item {
+        constructor(name, weight, price) {
+            super(name,weight,price)
+        }
 }
 
-class Pulses {
+class Pulses extends Item{
     constructor(name, weight, price) {
-        this.name = name;
-        this.weight = weight;
-        this.price = price;
-    }
-    totalValue() {
-        return this.weight * this.price;
+        super(name,weight,price)
     }
 }
 
@@ -132,184 +131,35 @@ class inventoryManager {
     }
 }
 
-/*class Person {
-    constructor(fname, lname, city, st, zip, phnum) {
-        this.firstname = fname,
-            this.lastname = lname,
-            this.city = city,
-            this.state = st,
-            this.zipcode = zip,
-            this.phonenumber = phnum
-
-
+class Player {
+    constructor(cards) {
+        this.cards = cards;
+    }
+    /**
+     * Function to sort the cards.
+     */
+    sortedCards() {
+        var sortedCards = [];
+        var access = require("../utility/utility");
+        sortedCards = access.bubbleSort(this.cards);
+        return sortedCards;
     }
 }
 
 
-class AddressBook {
-    constructor() { }
-    address(data) {
-        console.log("Enter 1 for add person information")
-        console.log("Enter 2 for update person information")
-        console.log("Enter 3 for remove person information")
-        console.log("Enter 4 for sort the addressbook based on ZIP")
-        console.log("Enter 5 for sort the addressbook based on firstname")
-        console.log("Enter 6 for Print all addressbook information")
-        var num = read.questionInt("Select  any number:")
-        switch (num) {
-            case 1: this.addPerson(data)
-                break;
-            case 2: this.updatePerson(data)
-                break;
-            case 3: this.removeperson(data)
-                break;
-            case 4: this.sortzip(data)
-                break;
-            case 5: this.sortfname(data)
-                break;
-            case 6: this.printadd(data)
-                break;
-
-        }
-
-    }
-    addPerson(data) {
-        var fname = read.question("Enter firstname of person :")
-        var lname = read.question("Enter lastname of person :")
-        var city1 = read.question("Enter city of person:")
-        var state1 = read.question("Enter state of person:")
-        var phonenum1 = read.question("Enter phonenumber:")
-        var zip = read.question("Enter zip code:")
-        var o = new Person(fname, lname, city1, state1, zip, phonenum1)
-        data.Person.push(
-            {
-                personfname: fname,
-                personlname: lname,
-                phonenumber: phonenum1,
-                city: city1,
-                state: state1
-            }
-        )
-
-        var d = file.writeFileSync('s.json', JSON.stringify(data))
-    }
-    updatePerson(data) {
-        var name = read.question("enter Firstname of person :")
-        for (let i = 0; i < data.Person.length; i++) {
-            if (data.Person[i].personfname == name) {
-                var index = data.Person.indexOf(data.Person[i]);
-                console.log(" select which information to be update ")
-                console.log("Enter 1 for firstname of person to be update")
-                console.log("Enter 2 for  lastname of person to be update")
-                console.log("Enter 3 for  phonenumber person to be update")
-                console.log("Enter 4 for  city of person to be update")
-                console.log("Enter 5 for  state of person to be update")
-                console.log("Enter 6 for  zip code of person to be update")
-                var num1 = read.questionInt("select any number:")
-                switch (num1) {
-                    case 1: this.firstname(data, index)
-                        break;
-                    case 2: this.lastname(data, index)
-                        break;
-                    case 3: this.phonenumber(data, index)
-                        break;
-                    case 4: this.city(data, index)
-                        break;
-                    case 5: this.state(data, index)
-                        break;
-                    case 6: this.zipcode(data, index)
-                        break;
-                }
-            }
-        }
-    }
-    firstname(data, index) {
-        var fname1 = read.question("enter the name changed first name:")
-        data.Person[index].personfname = fname1
-        var d = file.writeFileSync('AddressBook.json', JSON.stringify(data))
-
-    }
-    lastname(data, index) {
-        var lname1 = read.question("enter changed last name:")
-        data.Person[index].personlname = lname1
-        var d = file.writeFileSync('AddressBook.json', JSON.stringify(data))
-
-    }
-    phonenumber(data, index) {
-        var phonenumber1 = read.question("enter  changed phonenumber:")
-        data.Person[index].phonenumber = phonenumber1
-        var d = file.writeFileSync('AddressBook.json', JSON.stringify(data))
-
-    }
-    city(data, index) {
-        var cityname = read.question("enter changed city name")
-        data.Person[index].city = cityname
-        var d = file.writeFileSync('AddressBook.json', JSON.stringify(data))
-
-    }
-    state(data, index) {
-        var statename = read.question("enter the name changed first name")
-        data.Person[index].state = statename
-        var d = file.writeFileSync('AddressBook.json', JSON.stringify(data))
-
-    }
-    zipcode(data, index) {
-        var zipcode = read.question("enter the name changed first name")
-        data.Person[index].zip = zipcode
-        var d = file.writeFileSync('AddressBook.json', JSON.stringify(data))
-
-    }
-    removeperson(data) {
-
-        var name = read.question("enter name of person to be remove:")
-        for (let i = 0; i < data.Person.length; i++) {
-            if (data.Person[i].personfname == name) {
-                var index = data.Person.indexOf(data.Person[i]);
-                var dd = data.Person.splice(index, 1);
-            }
-            var d = file.writeFileSync('AddressBook.json', JSON.stringify(data))
-
-        }
-
-    }
-    sortfname(data) {
-        let fname = data.Person;
-        function sortbyfname(a, b) {
-            if (a.personfname == b.personfname);
-            return 0
-            if (a.personfname > b.personfname);
-            return 1
-            if (a.personfname < b.personfname);
-            return -1
-        }
-        var result = fname.sort(sortbyfname);
-        console.log(result);
 
 
-    }
-    sortzip(data) {
-        let refer = data.Person;
-        function sortbyzip(a, b) {
-            return (a.zip - b.zip);
-        }
-        var result = refer.sort(sortbyzip);
-        console.log(result);
 
-    }
-    printadd(data) {
-        var person = data.Person
-        for (const key in person) {
-            console.log(person[key])
-        }
+/**
+ * 
+ * 
+ * 
+ */
 
-
-    }
-}
-*/
-
-
-var p = file.readFileSync('address.json')
+var p = file.readFileSync('addressBook1.json')
 nameRestriction = /[a-z]/g;
+contactRestriction = /[0-9]/g;
+nameRestriction = /[a-z]/ig;
 contactRestriction = /[0-9]/g;
 class Address {
     constructor(addressb) {
@@ -317,34 +167,41 @@ class Address {
     }
     createAddress(addressb) {
         var name = read.question("Please enter your first name: ");
-        while (nameRestriction.test(name) == false) {
-            name = read.question("No special characters Invalid name! :");
+        while (!nameRestriction.test(name)) {
+            console.log("Please enter string");
+            name = read.question("Please enter your first name: ");
         }
         var lastName = read.question("Please enter your last name: ");
-        while (nameRestriction.test(lastName) == false) {
-            lastName = read.question("No special characters Invalid name! :");
+        while (!nameRestriction.test(lastName)) {
+            console.log("Please enter string!");
+            lastName = read.question("Please enter your last name: ");
         }
-        console.log("***Address Information***");
+        console.log("***Address Info***");
         var street = read.question("Street: ");
         var city = read.question("City: ");
-        while (nameRestriction.test(city) == false) {
-            city = read.question(" No special characters city! :");
-         }
+        while (!nameRestriction.test(city)) {
+            console.log("Please enter string!");
+            city = read.question("City: ");
+        }
         var state = read.question("State: ");
-        while (nameRestriction.test(state) == false) {
-            state = read.question(" No special characters state! :");
+        while (!nameRestriction.test(state)) {
+            console.log("Please enter string!");
+            state = read.question("State: ");
         }
         var nation = read.question("Nationality: ");
-        while (nameRestriction.test(nation) == false) {
-            nation = read.question(" No special characters Nationality! :");
+        while (!nameRestriction.test(nation)) {
+            console.log("Please enter string!");
+            nation = read.question("Nationality: ");
         }
         var zip = read.question("Zip code: ");
-        while (contactRestriction.test(zip) == false || zip.length != 6) {
-            zip = read.question("Enter the zip code 6 digits only : ");
+        if (contactRestriction.test(zip) == false || zip.length != 6) {
+            console.log("Invalid zip code!");
+            return false;
         }
         var phoneNum = read.question("Phone number: ");
-        while (contactRestriction.test(phoneNum) == false || phoneNum.length != 10) {
-            phoneNum = read.question(" Enter PhoneNumber 10 digits only :");
+        if (contactRestriction.test(phoneNum) == false || phoneNum.length != 10) {
+            console.log("Invalid phone number!");
+            return false;
         }
         addressb.Person.push({
             "Name": name,
@@ -397,9 +254,6 @@ class Address {
                     var choice2 = read.question("Please enter your choice: ");
                     switch (parseInt(choice2)) {
                         case 1:
-                            /**
-                             * update profile
-                             */
                             console.log("What do you want to update? ");
                             console.log("1: Street");
                             console.log("2: City");
@@ -412,8 +266,9 @@ class Address {
                             switch (parseInt(choice3)) {
                                 case 1:
                                     var sUpdate = read.question("Enter the new street number: ");
-                                    while (nameRestriction.test(sUpdate) == false && sUpdate.length > 3) {
-                                        sUpdate = read.question("No special characters Invalid name! :");
+                                    if (nameRestriction.test(sUpdate) == false && sUpdate.length > 3) {
+                                        console.log("Invalid name!");
+                                        return false;
                                     }
                                     var obj = {
                                         "Name": addressb.Person[k].Name,
@@ -432,9 +287,10 @@ class Address {
                                     break;
                                 case 2:
                                     var cUpdate = read.question("Enter the new city name: ");
-                                    while (nameRestriction.test(cUpdate) == false && cUpdate.length > 3) {
-                                        cUpdate = read.question("No special characters Invalid name! :");
-                                       }
+                                    if (nameRestriction.test(cUpdate) == false && cUpdate.length > 3) {
+                                        console.log("Invalid name!");
+                                        return false;
+                                    }
                                     var obj = {
                                         "Name": addressb.Person[k].Name,
                                         "LastName": addressb.Person[k].LastName,
@@ -452,8 +308,9 @@ class Address {
                                     break;
                                 case 3:
                                     var stUpdate = read.question("Enter the new state name: ");
-                                    while (nameRestriction.test(stUpdate) == false && stUpdate.length > 3) {
-                                        stUpdate = read.question("No special characters Invalid name! :");
+                                    if (nameRestriction.test(stUpdate) == false && stUpdate.length > 3) {
+                                        console.log("Invalid name!");
+                                        return false;
                                     }
                                     var obj = {
                                         "Name": addressb.Person[k].Name,
@@ -472,9 +329,9 @@ class Address {
                                     break;
                                 case 4:
                                     var nUpdate = read.question("Enter the new nation name: ");
-                                    while (nameRestriction.test(nUpdate) == false && nUpdate.length > 3) {
-                                        nUpdate = read.question("No special characters Invalid name! :");
-
+                                    if (nameRestriction.test(nUpdate) == false && nUpdate.length > 3) {
+                                        console.log("Invalid name!");
+                                        return false;
                                     }
                                     var obj = {
                                         "Name": addressb.Person[k].Name,
@@ -493,8 +350,9 @@ class Address {
                                     break;
                                 case 5:
                                     var zUpdate = read.question("Enter the new zip code: ");
-                                    while (contactRestriction.test(zUpdate) == false) {
-                                        zUpdate = read.question("No special characters Invalid number! :")
+                                    if (contactRestriction.test(zUpdate) == false) {
+                                        console.log("Invalid number!");
+                                        return false;
                                     }
                                     var obj = {
                                         "Name": addressb.Person[k].Name,
@@ -517,6 +375,7 @@ class Address {
                                         pUpdate = read.question("No special characters Invalid number! :");
 
                                     }
+
                                     var obj = {
                                         "Name": addressb.Person[k].Name,
                                         "LastName": addressb.Person[k].LastName,
@@ -572,7 +431,7 @@ class Address {
                     }
                 }
             } if (temp == -1) {
-            console.log("Profile unavailable!!Please create new one.");
+                console.log("Profile unavailable!!Please create new one.");
             }
         }
         else {
@@ -582,114 +441,121 @@ class Address {
     }
 }
 
+
+/**
+ * 
+ * 
+ */
+
 var read = require('readline-sync');
 var file = require('fs');
-var  M = require('../utility/utilityDataStructure');
-//var linkedList = new M.LinkedList();
 var s = 0;
-class StockAccount
-{
-    constructor()
-    {
 
+/************************* Stock Account Program ***************************
+ *  Stock Account Program
+ *---------------------------------
+ * @Purpose     :  To add and update the share info of customer and company.
+ * 
+ * @Use Library : Java JSON Library
+ *
+ * @description : StockAccount implements a data type that might be used by a financial institution to keep track of customer information.
+ *
+ * @function    : stockAccount keep the track of information about the company and the customer where customer can buy and sell the share .
+ *
+ * @param       : object --> objects such as customer,company which are at  stockAccountObject.
+ */
+
+class stockAccount {
+    constructor() {
     }
-    stockCreate(data)
-    {
-        var name1 = read.question("enter the name : ");
-        var id1 = Math.floor(Math.random()*100);
-        var share1=Math.floor(Math.random()*100);
+    stockCreate(data) {
+        var name1 = read.question(" enter the name of the customer: ");
+        var id1 = read.question(" enter the ID of the customer: ");
+        var share1 = read.question(" enter the number of shares: ");
         console.log(id1);
-        
         data.customer.push(
             {
-            name : name1,
-            id : id1 ,
-            share:share1      
-            } 
+                name: name1,
+                id: id1,
+                share: share1,
+            }
         )
-       console.log(data.customer);
-        
-        var d = file.writeFileSync('customer.json',JSON.stringify(data));
+        console.log(data.customer);
+        var d = file.writeFileSync('customer.json', JSON.stringify(data));
     }
-    buy(data,data1)
-    {
+    buy(data, data1) {
+        var flag = false;
         console.log(data);
         var object = data.customer;
-        var id1 = read.question("enter the id :");
-        for(let i in object)
-        {
-            if(object[i].id == id1)
-            {
+        var id1 = read.question(" enter the id : ");
+        for (let i in object) {
+            if (object[i].id == id1) {
                 var index = data.customer.indexOf(data.customer[i]);
                 var customername = object[i].name;
-                console.log("company information");
+                console.log(" company information ");
                 console.log(data1);
-                var name1 = read.question("enter name of company share you want to buy")
+                var sym = read.question(" enter symbol of company share you want to buy : ")
                 var object1 = data1.company;
-                for(let i in object1)
-                {
-                    if(object1[i].name == name1)
-                    {
+                for (let i in object1) {
+                    if (object1[i].symbol == sym) {
                         console.log("company number of shares price of each share");
                         console.log(object1[i]);
-                        var name10 = object1[i].name;
-                        var number = read.questionInt("enter the number of shares you want to buy");
-                        var s = "customer name :"+customername+ "and name of company "+name10+"buy number of shares "+number;
+                        var name10 = object1[i].name
+                        var sym10 = object1[i].symbol;
+                        var shar = object1[i].share;
+                        do {
+                            var number = read.questionInt(" enter the number of shares you want to buy : ");
+
+                            if (number > shar) {
+                                console.log(" Please enter the share number which less than company shares ");
+                            }
+                            else {
+                                flag = true;
+                            }
+                        } while (!flag)
+                        var s = " customer name :  " + customername + "  and name of company  " + name10 + " & symbol " + sym10 + "  buy number of shares " + number;
                         console.log(s);
-                       
-                        //this.stackps(s);
                         var time = new Date();
-                        var time1 = "time of buying the share is "+time;
-                        //this.queuetime(time1);
+                        console.log(" Time of buying the share is " + Math.floor(time.getSeconds()) + " sec ");
                         var n = parseInt(data.customer[index].share)
                         var n11 = parseInt(data1.company[i].share)
                         var num = parseInt(number);
                         var n1 = n + num;
                         var n2 = n11 - num;
-                        if(n11 > num )
-                        {
+                        if (n11 > num) {
                             data.customer[index].share = n1;
                             data1.company[i].share = n2;
-                            var d = file.writeFileSync('customer.json',JSON.stringify(data));
-                            //console.log(d) 
-                
-                            var d1 = file.writeFileSync('company.json',JSON.stringify(data1));
+                            var d = file.writeFileSync('customer.json', JSON.stringify(data));
+                            var d1 = file.writeFileSync('company.json', JSON.stringify(data1));
                         }
                     }
                 }
             }
-        } 
+        }
     }
-    sell(data , data1)
-    {
+    sell(data, data1) {
         console.log(data);
         var object = data.customer;
-        var id1 = read.question("enter the id :");
-        for(let i in object)
-        {
-            if(object[i].id == id1)
-            {
+        var id1 = read.question(" enter the id : ");
+        for (let i in object) {
+            if (object[i].id == id1) {
                 var index = data.customer.indexOf(data.customer[i])
                 var customername1 = object[i].name;
-                console.log("company information");
+                console.log(" company information ");
                 console.log(data1);
-                var name1 = read.question("enter name of company you want to sell");
+                var sym12 = read.question(" enter symbol  of company you want to sell : ");
                 var object1 = data1.company;
-                for(let i in object1)
-                {
-                    if(object1[i].name == name1)
-                    {
+                for (let i in object1) {
+                    if (object1[i].symbol == sym12) {
                         console.log("company number of shares and price of each share");
                         console.log(object1[i]);
                         var name11 = object1[i].name;
-                        var number = read.questionInt("enter how many shares you want to sell");
-                        var s = "customer name :"+customername1+ "and name of company "+name11+"sell number of shares "+number;
+                        var sym13 = object1[i].symbol;
+                        var number = read.questionInt("enter how many shares you want to sell :");
+                        var s = " customer name :" + customername1 + " and name of company " + name11 + " & symbol  " + sym13 + " sell number of shares :" + number;
                         console.log(s);
-                        
-                        //this.stackps(s);
-                        var time = new Date();
-                        var time1 = "time of selling the share is "+time;
-                        //this.queuetime(time1);
+                        var time11 = new Date();
+                        console.log(" Time of selling the share is " + Math.floor(time11.getSeconds()) + " sec ");
                         var n = parseInt(data.customer[index].share)
                         var n11 = parseInt(data1.company[i].share)
                         var num = parseInt(number);
@@ -697,37 +563,55 @@ class StockAccount
                         var n2 = n11 + num;
                         data.customer[index].share = n1;
                         data1.company[i].share = n2;
-                        var d = file.writeFileSync('customer.json',JSON.stringify(data));
-                        var d1 = file.writeFileSync('company.json',JSON.stringify(data1));
+                        var d = file.writeFileSync('customer.json', JSON.stringify(data));
+                        var d1 = file.writeFileSync('company.json', JSON.stringify(data1));
                     }
                 }
             }
         }
     }
-   /**  stackps(s)
-    {
-        var stack = M.StackLinkedList;
-        stack.push(s);
-        stack.print();
-    }*/
-   /**  queuetime(time)
-    {
-        var queue = M.LinkListQ
-        queue.enQueue(time);
-        queue.print();
-    }*/
-    print(data , data1)
-    {
+    print(data, data1) {
         console.log("customer shares information :");
         console.log(data);
         console.log("company shares information :");
-        console.log(data1);    
+        console.log(data1);
     }
 }
 
 
+class Deck 
+{
+    createDeck()
+    {
+        var suit = ["♣️", "🔸", "❤️", "♠️"];
+        var rank = ['2', '3', '4', '5', '6', '7', '8', '9', '10', "jack", "queen", "king", "ace"];
+        var cardarr = [];
+        for (let i = 0; i < suit.length; i++) 
+        {
+            for (let j = 0; j < rank.length; j++) 
+            {
+                var temp = " ";
+                cardarr.push(temp + rank[j] + suit[i]);
+            }
+        }
+        var cards = suit.length * rank.length;
+        for (let i = 0; i < cards; i++) 
+        {
+            var num = Math.floor(Math.random() * cards);
+            var temp = cardarr[i] + " ";
+            cardarr[i] = cardarr[num];
+            cardarr[num] = temp;
+        }
+        return cardarr;
+    }
+}
+
+
+
 module.exports = {
-    Stock, Rice, Wheat, Pulses, inventoryManager, Address, StockAccount,
+    Stock, Rice, Wheat, Pulses, inventoryManager, Address, stockAccount, Player,Deck,
+
+
 
     /*****************************************replaceUsingRegex****************************************
      * @purpose    : To print the Modified Message.
@@ -738,6 +622,7 @@ module.exports = {
      *               to replace name, full name, Mobile#, and Date with proper value.
      **************************************************************************************************/
 
+
     replaceUsingRegex(name, fullName, num, day, fileString) {
         fileString = fileString.replace(/<<name>>/g, name)
         fileString = fileString.replace(/<<full name>>/g, fullName)
@@ -746,5 +631,41 @@ module.exports = {
         return fileString;
     },
 
-
+    deckOfCard() {
+        try {
+            var suits = ["♣", "♦", "♥", "♠"];
+            var ranks = [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "Jack",
+                "Queen",
+                "King",
+                "Ace"
+            ];
+            var totalCards = suits.length * ranks.length;
+            var cardArray = [];
+            for (let currentSuit = 0; currentSuit < suits.length; currentSuit++) {
+                for (let currentRank = 0; currentRank < ranks.length; currentRank++) {
+                    var temp = "";
+                    cardArray.push(temp + ranks[currentRank] + suits[currentSuit]);
+                }
+            }
+            for (let shuffle = 0; shuffle < totalCards; shuffle++) {
+                var num = Math.floor(Math.random() * totalCards);
+                var temp = cardArray[shuffle];
+                cardArray[shuffle] = cardArray[num];
+                cardArray[num] = temp;
+            }
+            return cardArray;
+        } catch (error) {
+            console.log(error.message);
+        }
+    },
 }

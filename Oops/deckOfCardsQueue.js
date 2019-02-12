@@ -55,45 +55,23 @@ function deckCards(){
     var data =player1.printList().trim();
     var arr=data.split(" ");
     var arr10=utility.bubbleSort(arr);
-    //console.log("  [  "+ arr10 +"  ]  " );
+    console.log("  [  "+ arr10 +"  ]  " );
     var data1=player2.printList().trim();
     var arr1=data1.split(" ");
     var arr11=utility.bubbleSort(arr1);
-    //console.log("  [  "+ arr11 +"  ]  ");
+    console.log("  [  "+ arr11 +"  ]  ");
     var data2=player3.printList().trim();
     var arr2=data2.split(" ");
     var arr12=utility.bubbleSort(arr2);
-   // console.log("  [  "+ arr12 +"  ]  ");  
+    console.log("  [  "+ arr12 +"  ]  ");  
     var data3=player4.printList().trim();
     var arr3=data3.split(" ");
     var arr13=utility.bubbleSort(arr3);
-   // console.log("  [  "+ arr13 +"  ]  ");
-    //console.log("--------------------------------");
+    console.log("  [  "+ arr13 +"  ]  ");
+    console.log("--------------------------------");
 }
 deckCards();
       
 
 
     
-/*var D=require('../../ObjectOrientedPrograms/Oppsutility')
-var file=require('fs')
-var data1=file.readFileSync('AddressBook.json','utf8')
-var data=JSON.parse(data1)
-console.log(data.Person)
-D.address(data)
-
-var D=require('../../ObjectOrientedPrograms/Oppsutility')
-var M=require('../../ObjectOrientedPrograms/ADDress/Address')
-var file=require('fs')
-var data1=file.readFileSync('Address.json','utf8')
-var data=JSON.parse(data1)
-var object=new M.AddressBook
-object.address(data)
-
-
-
-var read = require('readline-sync')
-  var file = require('fs')
-  var sort=require('../../utility/utility')
- // var D=require('../utility/utility')
-  */

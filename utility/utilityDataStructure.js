@@ -140,6 +140,15 @@ class LinkedList {
     getsize() {
         return this.size;
     }
+    printele(){
+        var temp=this.head
+        while(temp){
+            var str=""
+            str=str+"name : "+temp.data.name+", share : "+temp.data.share+", price : "+temp.data.price
+            console.log(str);
+            temp=temp.next
+        }
+    }
 }
 
 /***********************************StackImplementation*******************************************
@@ -201,11 +210,11 @@ class Queue {
         this.items = [];
     }
 
-    enqueue(data) {
+    enQueue(data) {
         // adding element to the queue 
         this.items.push(data)
     }
-    deEqueue() {
+    deQueue() {
         if (this.isEmpty())
             return " ";
         return this.items.shift();

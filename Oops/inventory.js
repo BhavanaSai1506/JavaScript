@@ -10,13 +10,13 @@
  *                    Object from JSON. Calculate the value for every Inventory. 
  *  @author         : Bhavana Sai B <bhavanab1506@gmail.com@gmail.com>
  *  @version        : 1.0
- *  @since          : 09/02/2019
+ *  @since          : 07/02/2019
  *
  ******************************************************************************/
 
 
 var fileStream=require('fs');
-var UtilityOops=require('../Oops/oopsUtility');
+var utility=require('../Oops/oopsUtility');
 var input=fileStream.readFileSync('inventory.json');
 var object=JSON.parse(input);
 var sum=0;
@@ -31,7 +31,7 @@ for(let i in d)
     var total=d[i].weight*d[i].price
     console.log("The total value of ",d[i].name,"is",total);
     sum=sum+total;
-    i=new UtilityOops.Rice(name,weight,price)
+    i=new utility.Rice(name,weight,price)
 }
 console.log(sum);
 console.log();
@@ -43,7 +43,7 @@ for(let j in e)
     var total=e[j].weight*e[j].price;
     console.log("The total value of "+e[j].name+" is ",total);
     sum=sum+total;
-    j=new UtilityOops.Wheat(name,weight,price)
+    j=new utility.Wheat(name,weight,price)
 }
 console.log(sum);
 console.log();
@@ -55,7 +55,7 @@ for(let k in f)
     var total=f[k].weight*f[k].price;
     console.log("The total value of "+f[k].name+" is "+total);
     sum=sum+total;
-    k=new UtilityOops.Pulses(name,weight,price)
+    k=new utility.Pulses(name,weight,price)
 }
 console.log(sum);
 console.log();

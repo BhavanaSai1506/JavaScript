@@ -32,7 +32,7 @@ while (!isNaN(fullName))
     fullName = read.question('enter your fullname')
 }
 var num = read.questionInt('enter phone number')
-while (isNaN(num) && num.length!=09)
+while (isNaN(num) && num.length!=10)
 {
     console.log('enter valid number')
     name = read.question('enter your phone number')

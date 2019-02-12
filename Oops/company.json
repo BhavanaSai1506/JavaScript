@@ -1,1 +1,22 @@
-{"company":[{"name":"TCS","symbol":"T","share":5,"price":200},{"name":"SRS","symbol":"S","share":3,"price":400},{"name":"VRL","symbol":"V","share":5,"price":600}]}
+{
+    "company": [
+        {
+            "name": "TCS",
+            "symbol": "T",
+            "share": 10,
+            "price": 200
+        },
+        {
+            "name": "SRS",
+            "symbol": "S",
+            "share": 3,
+            "price": 400
+        },
+        {
+            "name": "VRL",
+            "symbol": "V",
+            "share": 2,
+            "price": 600
+        }
+    ]
+}
