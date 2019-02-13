@@ -1,0 +1,19 @@
+{
+    "companyShares": [
+        {
+    "name": "Facebook",
+    "share": 210,
+    "price": 2000
+},
+{
+    "name": "Twitter",
+    "share": 254,
+    "price": 4000
+},
+{
+    "name": "Amazon",
+    "share": 300,
+    "price": 6000
+}
+]
+}

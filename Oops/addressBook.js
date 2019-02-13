@@ -1,3 +1,19 @@
+/******************************************************************************
+ *  Execution       :   default node          : cmd> node addressBook.js
+ *                      
+ *  Purpose         : To print the 
+ * 
+ *  @description    
+ *  @file           : addressBook.js
+ *  @overview       : To create a JSON file having Inventory Details for Rice, Pulses and Wheats with properties
+ *                    name, weight, price per kg. Get JSON Object in Java or NSDictionary in iOS. Create Inventory 
+ *                    Object from JSON. Calculate the value for every Inventory. 
+ *  @author         : Bhavana Sai B <bhavanab1506@gmail.com@gmail.com>
+ *  @version        : 1.0
+ *  @since          : 07/02/2019
+ *
+ ******************************************************************************/
+
 var read = require('readline-sync')
 var utility=require('../Oops/oopsUtility')
 var fs = require('fs');

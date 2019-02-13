@@ -14,6 +14,7 @@ var pulses=object.Pulses;
 
 for(let i in rice )
 {
+  console.log(i);
   
     var name=rice[i].name;
     var weight=rice[i].weight;
@@ -23,11 +24,12 @@ for(let i in rice )
     console.log("the total value of",rice[i].name,"is",rice[i].weight * rice[i].price );
     sumRice =sumRice+total;
     i=new UtilityOops.Rice(name,weight,price)
+
+   console.log(i);
    
 
 }
 console.log("\n"+"[the total pice of rice]:"+sumRice );
-console.log("------------------------------------"+"\n");
 
 var sumWheat=0;
 for(let j in wheat)
@@ -45,7 +47,6 @@ for(let j in wheat)
     
 }
 console.log("\n"+"[the total price of Wheats]:"+sumWheat);
-console.log("------------------------------------------"+"\n");
 
 var sumPulses=0;
 for(let k in pulses)
@@ -61,13 +62,9 @@ for(let k in pulses)
 }
 
 console.log("\n"+"[the total price of pulses]:"+sumPulses+"\n");
-console.log("-------------------------------------------");
 
 var result=sumRice+sumWheat+sumPulses;
 console.log("*the total amount of all the items*=",result);
-
-console.log("-------------------------------------------"+"\n");
-
 
 
 
