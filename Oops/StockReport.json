@@ -1,0 +1,19 @@
+{
+    "StockReport" :[
+        {
+            "name": "ABC",
+            "numberofshare":2,
+            "shareprice":100
+        },
+        {
+            "name": "bridglabs",
+            "numberofshare": 50,
+            "shareprice": 10000
+        },
+        {
+            "name": "Amazon",
+            "numberofshare": 10,
+            "shareprice": 500
+        }
+    ]
+}

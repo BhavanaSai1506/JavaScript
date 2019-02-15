@@ -629,8 +629,42 @@ class LinledListQueue {
         }
         return st;
     }
-  }
-
+    printShares() {
+        var arr = [];
+        if (this.head == null) {
+          return null;
+        } else {
+          var temp = this.head;
+          while (temp) {
+            arr.push(temp.data);
+            temp = temp.next;
+          }
+          return arr;
+        }
+    }
+        removeStock(element) {
+                var temp = this.head;
+                var prev = null;
+                while (temp != null) {
+                  var stock = temp.data;
+                  if (stock.name == element) {
+                    if (prev == null) {
+                      this.head = temp.next;
+                    } else {
+                      prev.next = temp.next;
+                    }
+                    this.size--;
+                    return temp.data;
+                  }
+                  prev = temp;
+                  temp = temp.next;
+                }
+                return -1;
+              }
+            
+            
+  
+}
 module.exports = {
     LinkedList, Node, Stack, Queue, Dequeue, LinledListQueue,StackLinkedList,
 
