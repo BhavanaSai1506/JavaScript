@@ -75,12 +75,15 @@ showReport(data)
  var object=JSON.parse(data)
  var doctor=data.Doctor
  var newarr=[];
+ var count=Doctor.cnt;////
  var data = object.Patient
  for (let key in data) 
  {
- console.log(data[key].Name +" "+ data[key].AppointmentFrom +" "+data[key].OnTheDayOf)
+ console.log(data[key].Name +" "+ data[key].AppointmentFrom +" "+data[key].OnTheDayOf);
  newarr.push( data[key].AppointmentFrom )
  }
+console.log(count);
+
  console.log("-------------------------------------------------------------------------");
  }
 }
@@ -90,12 +93,14 @@ showReport(data)
 
 class Doctor
 {
+    
  constructor()
  {
  }
 
  searchDoctor(data)
  {
+    var cnt=0;///////
  var Doctor1=new Clinic;
  var doctor=data.Doctor
  var numbers=readline.questionInt("enter \n 1 to search Doctor by name \n 2 by ID \n 3 by Specialization: ")
@@ -126,9 +131,16 @@ class Doctor
  {
  if(doctor[key].Id==Id1)
  {
+    //  cnt++;
+    //  Doctor.push({
+    //     "noOfPatient": cnt
+    //  })
+    // file.writeFileSync('ClinicNew.json', JSON.stringify(data))
  console.log("-----Your Doctor Information is--------");
  console.log(doctor[key]);
  console.log("-----------------------------------------");
+
+ //return cnt+doctor[key];///////
  }
  }
  }
@@ -190,7 +202,7 @@ class Doctor
  "Age": age,
  "AppointmentFrom": appointmentFrom,
  "OnTheDayOf": day
-
+//---------
  })
  file.writeFileSync('ClinicNew.json', JSON.stringify(data))
  console.log("Your appointment is confirmed on :" + day + "/" + date.getMonth())

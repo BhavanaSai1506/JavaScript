@@ -4,24 +4,28 @@
     "Name": "Dr.Sahana",
     "Id": "SAT",
     "Specialisation": "Cardiologist",
+    "noOfPatient":0,
     "Availability": "AM"
     },
     {
     "Name": "Dr.Arjun",
     "Id": "H2o",
     "Specialisation": "Neurologist",
+    "noOfPatient":0,
     "Availability": "Both"
     },
     {
     "Name": "Dr.Supriya",
     "Id": "NAN",
     "Specialisation": "Ophthalmologist ",
+    "noOfPatient":0,
     "Availability": "Both"
     },
     {
     "Name": "Dr.Aish",
     "Id": "SWAN",
     "Specialisation": "Gynacologist",
+    "noOfPatient":0,
     "Availability": "PM"
     }
     ],

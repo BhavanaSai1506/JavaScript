@@ -2,13 +2,14 @@ var read =require('readline-sync')
 var file=require('fs')
 var utility=require('../Oops/utilityOOPS')
 class Person{
-    constructor(fname,lname,city,state,zip,phnum){
-        this.firstname=fname;
-        this.lastname=lname;
-        this.city=city;
-        this.state=state;
-        this.zip=zip;
-        this.phoneNumber=phnum;
+    constructor(fname,lname,city,state,nation,zip,phnum){
+        this.Name=fname;
+        this.LastName=lname;
+        this.City=city;
+        this.State=state;
+        this.Nation=nation
+        this.Zip=zip;
+        this.PhoneNum=phnum;
     }
 }  
 
@@ -156,21 +157,3 @@ class AddressBook{
 }
 
 module.exports=(Person,AddressBook)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

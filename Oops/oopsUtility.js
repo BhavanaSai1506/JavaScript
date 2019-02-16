@@ -451,12 +451,8 @@ var s = 0;
  *  Stock Account Program
  *---------------------------------
  * @Purpose     :  To add and update the share info of customer and company.
- * 
- * @Use Library : Java JSON Library
  *
  * @description : StockAccount implements a data type that might be used by a financial institution to keep track of customer information.
- *
- * @function    : stockAccount keep the track of information about the company and the customer where customer can buy and sell the share .
  *
  * @param       : object --> objects such as customer,company which are at  stockAccountObject.
  */
